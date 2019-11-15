@@ -1,0 +1,7 @@
+$resourceGroupName = "samplevmss-rg"
+$location = "westus"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -TemplateUri https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/vmss-template.json `
+  -TemplateParameterUri  https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/vmss-parameters.json
