@@ -1,0 +1,84 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westus2"
+        },
+        "vmssName": {
+            "value": "WFE"
+        },
+        "vmSku": {
+            "value": "Standard_DS1_v2"
+        },
+        "adminUsername": {
+            "value": "nthompson"
+        },
+        "instanceCount": {
+            "value": "3"
+        },
+        "image": {
+            "value": {
+                "sku": "2016-Datacenter",
+                "publisher": "MicrosoftWindowsServer",
+                "version": "latest",
+                "offer": "WindowsServer"
+            }
+        },
+        "singlePlacementGroup": {
+            "value": "false"
+        },
+        "pipName": {
+            "value": "wfepip"
+        },
+        "pipLabel": {
+            "value": "vmsstest304"
+        },
+        "skuType": {
+            "value": "Standard"
+        },
+        "ipAllocationMethod": {
+            "value": "Static"
+        },
+        "priority": {
+            "value": "Low"
+        },
+        "subnetId": {
+            "value": "/subscriptions/a9827c18-8954-49e6-805f-3b9bf28e9f4a/resourceGroups/vm-ss/providers/Microsoft.Network/virtualNetworks/WFE/subnets/default"
+        },
+        "enableAcceleratedNetworking": {
+            "value": "false"
+        },
+        "publicIpAddressPerInstance": {
+            "value": "false"
+        },
+        "upgradeMode": {
+            "value": "Manual"
+        },
+        "evictionPolicy": {
+            "value": "Delete"
+        },
+        "adminPassword": {
+            "value": "Temp$ecurePassword2020!"
+        },
+        "zones": {
+            "value": [
+                "1",
+                "2",
+                "3"
+            ]
+        },
+        "zoneBalance": {
+            "value": "false"
+        },
+        "spreadingAlgorithmPlatformFaultDomainCount": {
+            "value": "1"
+        },
+        "vnetName": {
+            "value": "WFE"
+        },
+        "networkSecurityGroupName": {
+            "value": "WFE-nsg"
+        }
+    }
+}
