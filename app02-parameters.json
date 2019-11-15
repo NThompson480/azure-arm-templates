@@ -105,7 +105,7 @@
             "value": "Temp$ecurePassword2020!"
         },
         "diagnosticsStorageAccountName": {
-            "value": "app02rgdiag"
+            "value": "app02rgdiag304"
         },
         "diagnosticsStorageAccountId": {
             "value": "Microsoft.Storage/storageAccounts/app02rgdiag"
