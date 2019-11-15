@@ -102,7 +102,7 @@
             "value": "vmt-admin"
         },
         "adminPassword": {
-            "value": null
+            "value": "Temp$ecurePassword2020!"
         },
         "diagnosticsStorageAccountName": {
             "value": "vmtrgdiag"
