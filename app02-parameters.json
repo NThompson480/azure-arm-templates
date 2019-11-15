@@ -108,7 +108,7 @@
             "value": "app02rgdiag304"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/app02rgdiag"
+            "value": "Microsoft.Storage/storageAccounts/app02rgdiag304"
         },
         "diagnosticsStorageAccountType": {
             "value": "Standard_LRS"
