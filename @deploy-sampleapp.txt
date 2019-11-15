@@ -17,3 +17,27 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db02-template.json `
   -TemplateParameterUri  https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db02-parameters.json
+
+
+
+OR....
+
+
+
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+$app01tUri = "https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/app01-template.json"
+$app01pUri = "https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/app01-parameters.json"
+$app02tUri = "https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/app02-template.json"
+$app02pUri = "https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/app02-parameters.json"
+$db01tUri = "https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db01-template.json"
+$db01pUri = "https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db01-parameters.json"
+$db02tUri = "https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db02-template.json"
+$db02pUri = "https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db02-parameters.json"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $app01tUri -TemplateParameterUri $app01pUri -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $app02tUri -TemplateParameterUri $app02pUri -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $db01tUri -TemplateParameterUri $db01pUri -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $db02tUri -TemplateParameterUri $db02pUri -Location $location
