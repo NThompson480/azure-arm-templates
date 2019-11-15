@@ -9,7 +9,7 @@
             "value": "app02-vm210"
         },
         "networkSecurityGroupName": {
-            "value": "app02-vm-nsg"
+            "value": "app01-vm-nsg"
         },
         "networkSecurityGroupRules": {
             "value": [
