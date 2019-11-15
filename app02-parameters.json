@@ -6,10 +6,10 @@
             "value": "westus"
         },
         "networkInterfaceName": {
-            "value": "app01-vm210"
+            "value": "app02-vm210"
         },
         "networkSecurityGroupName": {
-            "value": "app01-vm-nsg"
+            "value": "app02-vm-nsg"
         },
         "networkSecurityGroupRules": {
             "value": [
@@ -50,7 +50,7 @@
             ]
         },
         "publicIpAddressName": {
-            "value": "app01-vm-ip"
+            "value": "app02-vm-ip"
         },
         "publicIpAddressType": {
             "value": "Dynamic"
@@ -59,7 +59,7 @@
             "value": "Basic"
         },
         "virtualMachineName": {
-            "value": "app01-vm"
+            "value": "app02-vm"
         },
         "virtualMachineRG": {
             "value": "app01-rg"
@@ -75,7 +75,7 @@
                     "caching": "ReadOnly",
                     "writeAcceleratorEnabled": false,
                     "id": null,
-                    "name": "app01-vm_DataDisk_0",
+                    "name": "app02-vm_DataDisk_0",
                     "storageAccountType": null,
                     "diskSizeGB": null
                 }
@@ -84,7 +84,7 @@
         "dataDiskResources": {
             "value": [
                 {
-                    "name": "app01-vm_DataDisk_0",
+                    "name": "app02-vm_DataDisk_0",
                     "sku": "StandardSSD_LRS",
                     "properties": {
                         "diskSizeGB": 8,
@@ -99,16 +99,16 @@
             "value": "Standard_D1"
         },
         "adminUsername": {
-            "value": "app01-admin"
+            "value": "app02-admin"
         },
         "adminPassword": {
             "value": "Temp$ecurePassword2020!"
         },
         "diagnosticsStorageAccountName": {
-            "value": "app01rgdiag"
+            "value": "app02rgdiag"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/app01rgdiag"
+            "value": "Microsoft.Storage/storageAccounts/app02rgdiag"
         },
         "diagnosticsStorageAccountType": {
             "value": "Standard_LRS"
