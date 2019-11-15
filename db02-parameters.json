@@ -105,10 +105,10 @@
             "value": "Temp$ecurePassword2020!"
         },
         "diagnosticsStorageAccountName": {
-            "value": "sampleappdiag"
+            "value": "sampleappdiag304"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/sampleappdiag"
+            "value": "Microsoft.Storage/storageAccounts/sampleappdiag304"
         },
         "diagnosticsStorageAccountType": {
             "value": "Standard_LRS"
