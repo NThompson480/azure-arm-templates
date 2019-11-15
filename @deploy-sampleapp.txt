@@ -1,0 +1,19 @@
+$resourceGroupName = "sampleapp-rg"
+$location = "westus"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -TemplateUri https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/app01-template.json `
+  -TemplateParameterUri  https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/app01-parameters.json
+
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -TemplateUri https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/app02-template.json `
+  -TemplateParameterUri  https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/app02-parameters.json
+
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -TemplateUri https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db01-template.json `
+  -TemplateParameterUri  https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db01-parameters.json
+
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+  -TemplateUri https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db02-template.json `
+  -TemplateParameterUri  https://raw.githubusercontent.com/NThompson480/azure-arm-templates/master/db02-parameters.json
