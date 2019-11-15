@@ -44,7 +44,7 @@
             "value": "Low"
         },
         "subnetId": {
-            "value": "/subscriptions/a9827c18-8954-49e6-805f-3b9bf28e9f4a/resourceGroups/vm-ss/providers/Microsoft.Network/virtualNetworks/WFE/subnets/default"
+            "value": "/subscriptions/a9827c18-8954-49e6-805f-3b9bf28e9f4a/resourceGroups/samplevmss-rg/providers/Microsoft.Network/virtualNetworks/WFE/subnets/default"
         },
         "enableAcceleratedNetworking": {
             "value": "false"
