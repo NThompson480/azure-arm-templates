@@ -6,7 +6,7 @@
             "value": "westus"
         },
         "networkInterfaceName": {
-            "value": "app02-vm210"
+            "value": "db01-vm210"
         },
         "networkSecurityGroupName": {
             "value": "app01-vm-nsg"
@@ -50,7 +50,7 @@
             ]
         },
         "publicIpAddressName": {
-            "value": "app02-vm-ip"
+            "value": "db01-vm-ip"
         },
         "publicIpAddressType": {
             "value": "Dynamic"
@@ -59,7 +59,7 @@
             "value": "Basic"
         },
         "virtualMachineName": {
-            "value": "app02-vm"
+            "value": "db01-vm"
         },
         "virtualMachineRG": {
             "value": "app01-rg"
@@ -75,7 +75,7 @@
                     "caching": "ReadOnly",
                     "writeAcceleratorEnabled": false,
                     "id": null,
-                    "name": "app02-vm_DataDisk_0",
+                    "name": "db01-vm_DataDisk_0",
                     "storageAccountType": null,
                     "diskSizeGB": null
                 }
@@ -84,7 +84,7 @@
         "dataDiskResources": {
             "value": [
                 {
-                    "name": "app02-vm_DataDisk_0",
+                    "name": "db01-vm_DataDisk_0",
                     "sku": "StandardSSD_LRS",
                     "properties": {
                         "diskSizeGB": 8,
@@ -99,16 +99,16 @@
             "value": "Standard_D1"
         },
         "adminUsername": {
-            "value": "app02-admin"
+            "value": "db01-admin"
         },
         "adminPassword": {
             "value": "Temp$ecurePassword2020!"
         },
         "diagnosticsStorageAccountName": {
-            "value": "app02rgdiag304"
+            "value": "db01rgdiag304"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/app02rgdiag304"
+            "value": "Microsoft.Storage/storageAccounts/db01rgdiag304"
         },
         "diagnosticsStorageAccountType": {
             "value": "Standard_LRS"
