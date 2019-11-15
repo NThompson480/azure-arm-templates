@@ -102,7 +102,7 @@
             "value": "app01-admin"
         },
         "adminPassword": {
-            "value": null
+            "value": "Temp$ecurePassword2020!"
         },
         "diagnosticsStorageAccountName": {
             "value": "app01rgdiag"
