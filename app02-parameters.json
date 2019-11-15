@@ -9,7 +9,7 @@
             "value": "app02-vm210"
         },
         "networkSecurityGroupName": {
-            "value": "app01-vm-nsg"
+            "value": "sampleapp-nsg"
         },
         "networkSecurityGroupRules": {
             "value": [
@@ -29,10 +29,10 @@
             ]
         },
         "subnetName": {
-            "value": "default"
+            "value": "sampleapp-default"
         },
         "virtualNetworkName": {
-            "value": "app01-rg-vnet"
+            "value": "sampleapp-vnet"
         },
         "addressPrefixes": {
             "value": [
@@ -42,7 +42,7 @@
         "subnets": {
             "value": [
                 {
-                    "name": "default",
+                    "name": "sampleapp-default",
                     "properties": {
                         "addressPrefix": "10.0.2.0/24"
                     }
@@ -62,7 +62,7 @@
             "value": "app02-vm"
         },
         "virtualMachineRG": {
-            "value": "app01-rg"
+            "value": "sampleapp-rg"
         },
         "osDiskType": {
             "value": "StandardSSD_LRS"
@@ -99,16 +99,16 @@
             "value": "Standard_D1"
         },
         "adminUsername": {
-            "value": "app02-admin"
+            "value": "sampleapp-admin"
         },
         "adminPassword": {
             "value": "Temp$ecurePassword2020!"
         },
         "diagnosticsStorageAccountName": {
-            "value": "app02rgdiag304"
+            "value": "sampleappdiag"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/app02rgdiag304"
+            "value": "Microsoft.Storage/storageAccounts/sampleappdiag"
         },
         "diagnosticsStorageAccountType": {
             "value": "Standard_LRS"
