@@ -6,51 +6,19 @@
             "value": "westus"
         },
         "networkInterfaceName": {
-            "value": "app02-vm210"
+            "value": "app02298"
         },
-        "networkSecurityGroupName": {
-            "value": "sampleapp-nsg"
-        },
-        "networkSecurityGroupRules": {
-            "value": [
-                {
-                    "name": "RDP",
-                    "properties": {
-                        "priority": 300,
-                        "protocol": "TCP",
-                        "access": "Allow",
-                        "direction": "Inbound",
-                        "sourceAddressPrefix": "*",
-                        "sourcePortRange": "*",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "3389"
-                    }
-                }
-            ]
+        "networkSecurityGroupId": {
+            "value": "/subscriptions/a9827c18-8954-49e6-805f-3b9bf28e9f4a/resourceGroups/sampleapp-rg/providers/Microsoft.Network/networkSecurityGroups/sampleapp-nsg"
         },
         "subnetName": {
             "value": "sampleapp-default"
         },
-        "virtualNetworkName": {
-            "value": "sampleapp-vnet"
-        },
-        "addressPrefixes": {
-            "value": [
-                "10.0.2.0/24"
-            ]
-        },
-        "subnets": {
-            "value": [
-                {
-                    "name": "sampleapp-default",
-                    "properties": {
-                        "addressPrefix": "10.0.2.0/24"
-                    }
-                }
-            ]
+        "virtualNetworkId": {
+            "value": "/subscriptions/a9827c18-8954-49e6-805f-3b9bf28e9f4a/resourceGroups/sampleapp-rg/providers/Microsoft.Network/virtualNetworks/sampleapp-vnet"
         },
         "publicIpAddressName": {
-            "value": "app02-vm-ip"
+            "value": "app02-ip"
         },
         "publicIpAddressType": {
             "value": "Dynamic"
@@ -59,41 +27,13 @@
             "value": "Basic"
         },
         "virtualMachineName": {
-            "value": "app02-vm"
+            "value": "app02"
         },
         "virtualMachineRG": {
             "value": "sampleapp-rg"
         },
         "osDiskType": {
             "value": "StandardSSD_LRS"
-        },
-        "dataDisks": {
-            "value": [
-                {
-                    "lun": 0,
-                    "createOption": "attach",
-                    "caching": "ReadOnly",
-                    "writeAcceleratorEnabled": false,
-                    "id": null,
-                    "name": "app02-vm_DataDisk_0",
-                    "storageAccountType": null,
-                    "diskSizeGB": null
-                }
-            ]
-        },
-        "dataDiskResources": {
-            "value": [
-                {
-                    "name": "app02-vm_DataDisk_0",
-                    "sku": "StandardSSD_LRS",
-                    "properties": {
-                        "diskSizeGB": 8,
-                        "creationData": {
-                            "createOption": "empty"
-                        }
-                    }
-                }
-            ]
         },
         "virtualMachineSize": {
             "value": "Standard_D1"
@@ -102,19 +42,13 @@
             "value": "sampleapp-admin"
         },
         "adminPassword": {
-            "value": "Temp$ecurePassword2020!"
+            "value": null
         },
         "diagnosticsStorageAccountName": {
             "value": "sampleappdiag304"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/sampleappdiag304"
-        },
-        "diagnosticsStorageAccountType": {
-            "value": "Standard_LRS"
-        },
-        "diagnosticsStorageAccountKind": {
-            "value": "Storage"
+            "value": "/subscriptions/a9827c18-8954-49e6-805f-3b9bf28e9f4a/resourceGroups/sampleapp-rg/providers/Microsoft.Storage/storageAccounts/sampleappdiag304"
         },
         "autoShutdownStatus": {
             "value": "Enabled"
