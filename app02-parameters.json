@@ -42,7 +42,7 @@
             "value": "sampleapp-admin"
         },
         "adminPassword": {
-            "value": null
+            "value": "Temp$ecurePassword2020!"
         },
         "diagnosticsStorageAccountName": {
             "value": "sampleappdiag304"
