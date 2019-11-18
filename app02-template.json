@@ -8,23 +8,14 @@
         "networkInterfaceName": {
             "type": "string"
         },
-        "networkSecurityGroupName": {
+        "networkSecurityGroupId": {
             "type": "string"
-        },
-        "networkSecurityGroupRules": {
-            "type": "array"
         },
         "subnetName": {
             "type": "string"
         },
-        "virtualNetworkName": {
+        "virtualNetworkId": {
             "type": "string"
-        },
-        "addressPrefixes": {
-            "type": "array"
-        },
-        "subnets": {
-            "type": "array"
         },
         "publicIpAddressName": {
             "type": "string"
@@ -44,12 +35,6 @@
         "osDiskType": {
             "type": "string"
         },
-        "dataDisks": {
-            "type": "array"
-        },
-        "dataDiskResources": {
-            "type": "array"
-        },
         "virtualMachineSize": {
             "type": "string"
         },
@@ -63,12 +48,6 @@
             "type": "string"
         },
         "diagnosticsStorageAccountId": {
-            "type": "string"
-        },
-        "diagnosticsStorageAccountType": {
-            "type": "string"
-        },
-        "diagnosticsStorageAccountKind": {
             "type": "string"
         },
         "autoShutdownStatus": {
@@ -88,8 +67,8 @@
         }
     },
     "variables": {
-        "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
-        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "nsgId": "[parameters('networkSecurityGroupId')]",
+        "vnetId": "[parameters('virtualNetworkId')]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
         "diagnosticsExtensionName": "Microsoft.Insights.VMDiagnosticsSettings"
     },
@@ -100,8 +79,6 @@
             "apiVersion": "2019-07-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
                 "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]"
             ],
             "properties": {
@@ -122,36 +99,6 @@
                 "networkSecurityGroup": {
                     "id": "[variables('nsgId')]"
                 }
-            },
-            "tags": {
-                "Owner": "Nick Thompson"
-            }
-        },
-        {
-            "name": "[parameters('networkSecurityGroupName')]",
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2019-02-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "securityRules": "[parameters('networkSecurityGroupRules')]"
-            },
-            "tags": {
-                "Owner": "Nick Thompson"
-            }
-        },
-        {
-            "name": "[parameters('virtualNetworkName')]",
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2019-04-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": "[parameters('addressPrefixes')]"
-                },
-                "subnets": "[parameters('subnets')]"
-            },
-            "tags": {
-                "Owner": "Nick Thompson"
             }
         },
         {
@@ -164,26 +111,6 @@
             },
             "sku": {
                 "name": "[parameters('publicIpAddressSku')]"
-            },
-            "tags": {
-                "Owner": "Nick Thompson"
-            }
-        },
-        {
-            "name": "[parameters('dataDiskResources')[copyIndex()].name]",
-            "type": "Microsoft.Compute/disks",
-            "apiVersion": "2019-07-01",
-            "location": "[parameters('location')]",
-            "properties": "[parameters('dataDiskResources')[copyIndex()].properties]",
-            "sku": {
-                "name": "[parameters('dataDiskResources')[copyIndex()].sku]"
-            },
-            "copy": {
-                "name": "managedDiskResources",
-                "count": "[length(parameters('dataDiskResources'))]"
-            },
-            "tags": {
-                "Owner": "Nick Thompson"
             }
         },
         {
@@ -192,9 +119,7 @@
             "apiVersion": "2019-07-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "managedDiskResources",
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]",
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]"
+                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"
             ],
             "properties": {
                 "hardwareProfile": {
@@ -212,24 +137,7 @@
                         "offer": "WindowsServer",
                         "sku": "2016-Datacenter",
                         "version": "latest"
-                    },
-                    "copy": [
-                        {
-                            "name": "dataDisks",
-                            "count": "[length(parameters('dataDisks'))]",
-                            "input": {
-                                "lun": "[parameters('dataDisks')[copyIndex('dataDisks')].lun]",
-                                "createOption": "[parameters('dataDisks')[copyIndex('dataDisks')].createOption]",
-                                "caching": "[parameters('dataDisks')[copyIndex('dataDisks')].caching]",
-                                "writeAcceleratorEnabled": "[parameters('dataDisks')[copyIndex('dataDisks')].writeAcceleratorEnabled]",
-                                "diskSizeGB": "[parameters('dataDisks')[copyIndex('dataDisks')].diskSizeGB]",
-                                "managedDisk": {
-                                    "id": "[coalesce(parameters('dataDisks')[copyIndex('dataDisks')].id, if(equals(parameters('dataDisks')[copyIndex('dataDisks')].name, json('null')), json('null'), resourceId('Microsoft.Compute/disks', parameters('dataDisks')[copyIndex('dataDisks')].name)))]",
-                                    "storageAccountType": "[parameters('dataDisks')[copyIndex('dataDisks')].storageAccountType]"
-                                }
-                            }
-                        }
-                    ]
+                    }
                 },
                 "networkProfile": {
                     "networkInterfaces": [
@@ -253,23 +161,6 @@
                         "storageUri": "[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
                     }
                 }
-            },
-            "tags": {
-                "Owner": "Nick Thompson"
-            }
-        },
-        {
-            "name": "[parameters('diagnosticsStorageAccountName')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
-            "location": "[parameters('location')]",
-            "properties": {},
-            "kind": "[parameters('diagnosticsStorageAccountKind')]",
-            "sku": {
-                "name": "[parameters('diagnosticsStorageAccountType')]"
-            },
-            "tags": {
-                "Owner": "Nick Thompson"
             }
         },
         {
@@ -293,47 +184,7 @@
                     "notificationLocale": "[parameters('autoShutdownNotificationLocale')]",
                     "timeInMinutes": "30"
                 }
-            },
-            "tags": {
-                "Owner": "Nick Thompson"
             }
-        },
-        {
-            "name": "microsoft.antimalware-windows-20191114164518",
-            "apiVersion": "2015-01-01",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "incremental",
-                "templateLink": {
-                    "uri": "https://gallery.azure.com/artifact/20161101/microsoft.antimalware-windows-arm.1.0.2/Artifacts/MainTemplate.json"
-                },
-                "parameters": {
-                    "vmName": {
-                        "value": "[parameters('virtualMachineName')]"
-                    },
-                    "location": {
-                        "value": "westus"
-                    },
-                    "RealtimeProtectionEnabled": {
-                        "value": "true"
-                    },
-                    "ScheduledScanSettingsIsEnabled": {
-                        "value": "false"
-                    },
-                    "ScheduledScanSettingsScanType": {
-                        "value": "Quick"
-                    },
-                    "ScheduledScanSettingsDay": {
-                        "value": "7"
-                    },
-                    "ScheduledScanSettingsTime": {
-                        "value": "120"
-                    }
-                }
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
-            ]
         },
         {
             "name": "[concat(parameters('virtualMachineName'),'/', variables('diagnosticsExtensionName'))]",
@@ -622,11 +473,8 @@
                     "storageAccountEndPoint": "https://core.windows.net/"
                 }
             },
-            "tags": {
-                "Owner": "Nick Thompson"
-            },
             "dependsOn": [
-                "microsoft.antimalware-windows-20191114164518"
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
             ]
         }
     ],
